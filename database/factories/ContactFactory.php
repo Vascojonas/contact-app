@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\Contact;
+use App\Models\User;
 use App\Models\Company;
+use App\Models\Contact;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
 class ContactFactory extends Factory
 {
     /**
@@ -22,7 +24,9 @@ class ContactFactory extends Factory
             'phone'=>$this->faker->phoneNumber(),
             'email'=>$this->faker->unique()->email(),
             'address'=>$this->faker->address(),
-            //'company_id'=>Company::pluck('id')->random() //esta functionalidad fui substituida por save many no DatabaseSeeder
+            'company_id'=>Company::pluck('id')->random(), //esta functionalidad fui substituida por save many no DatabaseSeeder
+            'user_id'=> User::pluck('id')->random()
+            
         ];
     }
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\FilterScope;
+use App\Scopes\FilterSearchScope;
 use App\Scopes\ContactSearchScope;
 
 class Contact extends Model
@@ -23,6 +24,11 @@ class Contact extends Model
         return $query->orderBy('id', 'desc');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+     
     /*
     public function scopeFilter($query)
     {
